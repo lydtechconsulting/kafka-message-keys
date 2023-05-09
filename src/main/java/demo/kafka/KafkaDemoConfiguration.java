@@ -31,6 +31,8 @@ public class KafkaDemoConfiguration {
     public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(final ConsumerFactory<Object, Object> consumerFactory) {
         final ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
+        // Concurrency of 3 - 3 instances of the consumer will be initialised and the partitions will be assigned across them.
+        factory.setConcurrency(3);
         return factory;
     }
 

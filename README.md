@@ -81,6 +81,11 @@ List topics:
 kafka-topics --list --bootstrap-server localhost:9092
 ```
 
+Describe the demo consumer group:
+```
+kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group demo-consumer-group
+```
+
 ## Integration Tests
 
 Run integration tests with `mvn clean test`
