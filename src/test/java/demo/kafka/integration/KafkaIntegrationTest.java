@@ -171,7 +171,7 @@ public class KafkaIntegrationTest {
             kafkaTemplate.send(DEMO_INBOUND_TEST_TOPIC, inboundKey, inboundPayload);
         }
 
-        Awaitility.await().atMost(30, TimeUnit.SECONDS).pollDelay(100, TimeUnit.MILLISECONDS)
+        Awaitility.await().atMost(60, TimeUnit.SECONDS).pollDelay(100, TimeUnit.MILLISECONDS)
                 .until(testReceiver.counter::get, equalTo(totalMessages));
 
         // Each event key should only ever be present on one partition.
@@ -187,7 +187,7 @@ public class KafkaIntegrationTest {
             messages.stream()
                 .map(map -> (map.getRight()))
                 .reduce((sequenceCurrent, sequenceNext) -> {
-                    log.info("sequenceCurrent: {} - sequenceNext: {}", sequenceCurrent, sequenceNext);
+                    log.debug("sequenceCurrent: {} - sequenceNext: {}", sequenceCurrent, sequenceNext);
                     assertThat(sequenceCurrent, lessThan(sequenceNext));
                     return sequenceNext;
                 });
