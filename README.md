@@ -36,8 +36,9 @@ Produce a demo-inbound message:
 kafka-console-producer \
 --topic demo-inbound-topic \
 --broker-list kafka:29092 \
---property "key.separator=;" \
---property parse.key=true
+--property parse.key=true \
+--property "key.separator=;"
+
 ```
 Now enter the message (with key prefix):
 ```
@@ -58,7 +59,8 @@ kafka-console-consumer \
 --bootstrap-server kafka:29092 \
 --from-beginning \
 --property print.key=true \
---property key.separator=";"
+--property key.separator=";" \
+-- from-beginning
 ```
 Output:
 ```
