@@ -2,6 +2,10 @@
 
 Spring Boot application demonstrating use of Kafka message keys, partitions, and message ordering.
 
+This repo accompanies the following article:
+
+- [Kafka Keys, Partitions and Message Ordering](https://www.lydtechconsulting.com/blog-kafka-message-keys.html): Uncovering how Kafka guarantees message ordering based on the relationship between message keys and topic partitions.
+
 ## Build
 
 With Java version 17:
